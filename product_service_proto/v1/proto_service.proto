@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package grpc_example.product_service.v1;
+
+option go_package = "grpc_example/product_service_proto/v1";
+
+
+service ProductService {
+  rpc AddProduct (Product) returns (ProductResponse) {}
+  rpc GetAllProducts (Empty) returns (ProductsResponse) {}
+}
+
+message ProductResponse {
+  string message = 1;
+}
+
+message ProductsResponse {
+  repeated Product products = 1;
+}
+
+message Product {
+  string name = 1;
+  double price = 2;
+}
+
+message Empty {}
